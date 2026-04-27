@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  calcus_demo-app:
+    build: .
+    container_name: calcus_demo-app
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=production
+    restart: unless-stopped
