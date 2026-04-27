@@ -18,8 +18,7 @@ WORKDIR /app
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 # Copy jar from build stage
-COPY --from=build /app/target/calcus_demo-1.0.0.jar/app/ calcus_demo-1.0.0.jar
-
+COPY --from=build /app/target/*.jar app.jar
 # Switch to non-root user
 USER appuser
 
@@ -31,7 +30,7 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD wget --quiet --tries=1 --spider http://localhost:8080/ || exit 1
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "calcus_demo-1.0.0.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
 
 
 
