@@ -32,7 +32,7 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "calcus_demo-1.0.0.jar"]
-<<<<<<< HEAD
+
 
 
 
@@ -58,5 +58,4 @@ ENTRYPOINT ["java", "-jar", "calcus_demo-1.0.0.jar"]
 #
 # Run the application
 #ENTRYPOINT ["java", "-jar", "app.jar"]
-=======
->>>>>>> 1d90076282055c6cb495d1e3b4ae3b73008bf955
+
