@@ -31,3 +31,25 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+target/
+
+# Maven
+log/
+temp/
+*.log
+*.txt
+
+# Docker
+.DS_Store
+docker-compose.override.yml
+
+# System files
+Thumbs.db
+.DS_Store
