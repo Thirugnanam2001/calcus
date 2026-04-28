@@ -1,5 +1,7 @@
 package com.example.calcus_demo.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.calcus_demo.model.CalculationRequest;
 import com.example.calcus_demo.service.CalculatorService;
 import jakarta.validation.Valid;
@@ -10,6 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CalculatorController {
+    @GetMapping("/health")
+    @ResponseBody
+    public String healthCheck() {
+        return "OK";
+    }
 
     @Autowired
     private CalculatorService calculatorService;
