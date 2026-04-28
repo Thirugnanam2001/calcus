@@ -17,23 +17,25 @@ WORKDIR /app
 # Create non-root user for security
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
-# Copy jar from build stage
-COPY --from=build /app/target/*.jar app.jar
+# Copy jar from build stage - FIXED PATH
+COPY --from=build /app/target/calcus_demo-1.0.0.jar app.jar
+
 # Switch to non-root user
 USER appuser
 
 # Expose port
 EXPOSE 8080
 
-# Health check
+# Health check - install wget first (alpine doesn't have it by default)
+USER root
+RUN apk add --no-cache wget
+USER appuser
+
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD wget --quiet --tries=1 --spider http://localhost:8080/ || exit 1
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
-
-
 
 
 
